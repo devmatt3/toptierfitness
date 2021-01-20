@@ -1,0 +1,49 @@
+@import './Reset.module.scss';
+
+/***************
+ ** Functions **
+ ***************/
+
+@function mob($target) {
+  $vw-context: (375 * 0.01) * 1px;
+  @return ($target / $vw-context) * 1vw;
+}
+
+@function tab($target) {
+  $vw-context: (1024 * 0.01) * 1px;
+  @return ($target / $vw-context) * 1vw;
+}
+
+@function des($target) {
+  $vw-context: (1366 * 0.01) * 1px;
+  @return ($target / $vw-context) * 1vw;
+}
+
+/*******************
+ ** Media Queries **
+ *******************/
+
+$mq-screen: "screen";
+$mq-small: "screen and (min-width: 768px)";
+$mq-medium: "screen and (min-width: 1024px)";
+$mq-large: "screen and (min-width: 1366px)";
+$mq-largest: "screen and (min-width: 1760px)";
+
+/************
+ ** Mixins **
+ ************/
+
+@mixin placeholder($selector) {
+  #{$selector}::-webkit-input-placeholder {
+    @content;
+  }
+  #{$selector}::-moz-placeholder {
+    @content;
+  }
+  #{$selector}:-moz-placeholder {
+    @content;
+  }
+  #{$selector}:-ms-input-placeholder {
+    @content;
+  }
+}

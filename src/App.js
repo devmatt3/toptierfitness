@@ -3,18 +3,15 @@ import { Helmet } from 'react-helmet'
 import {
   BrowserRouter,
   Route,
-  Switch,
-  Redirect
+  Switch
 } from 'react-router-dom'
-import { apiEndpoint } from './prismic-configuration'
-import { Help, Preview, NotFound } from './pages'
+import { repoName } from './prismic-configuration';
+import { Home, Preview, NotFound } from './pages'
 
 /**
- * Main application componenet
+ * Main application com ponenet
  */
 const App = (props) => {
-  const repoNameArray = /([^/]+)\.cdn.prismic\.io\/api/.exec(apiEndpoint)
-  const repoName = repoNameArray[1]
 
   return (
     <Fragment>
@@ -23,8 +20,7 @@ const App = (props) => {
       </Helmet>
       <BrowserRouter>
         <Switch>
-          <Redirect exact from='/' to='/help' />
-          <Route exact path='/help' component={Help} />
+          <Route exact from='/' component={Home} />
           <Route exact path='/preview' component={Preview} />
           <Route component={NotFound} />
         </Switch>

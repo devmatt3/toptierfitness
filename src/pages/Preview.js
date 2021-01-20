@@ -1,6 +1,9 @@
 import { useEffect } from 'react'
 import qs from 'qs'
-import { client, linkResolver } from '../prismic-configuration'
+import Prismic from 'prismic-javascript';
+import { repoName, linkResolver } from '../prismic-configuration';
+
+const previewClient = Prismic.client(`https://${repoName}.cdn.prismic.io/api/v2`);
 
 /**
  * Prismic preview endpoint component
@@ -15,9 +18,10 @@ const Preview = ({ history, location }) => {
 
     // Retrieve the correct URL for the document being previewed.
     // Once fetched, redirect to the given url
-    client.previewSession(params.token, linkResolver, '/').then(url => history.push(url))
+    previewClient.previewSession(params.token, linkResolver, '/').then(url => history.push(url))
   })
   return null
 }
 
 export default Preview
+ 
